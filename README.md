@@ -10,3 +10,38 @@ The assumption is that the demos consist of two parts:
 
 1. Writing two shell scripts to interact with the GitHub API (create a repository and list repositories in an organization). This shows that Copilot can handle scripting and how an integration with an API works.
 2. Implementing a command-line tool that performs basic math operations. This, though simple, shows how fast one can go from 0 to a functional tool that includes tests and validations. The benefit of a CLI tool is that pretty much any of the most popular languages can support it with minimal effort and library utilization.
+
+# Dotnet
+
+A valid prompt to trigger the dotnet demo in Copilot Chat could be along the lines of:
+
+> I am new to the dotnet environment and I need to develop a command line tool. Please guide me step-by-step on how to scaffold a new project, including the skeleton structure for unit tests.
+
+This will trigger the creation of a new `console` application:
+
+`dotnet new console -n MyTool`
+
+Then the inclusion of unit test structure:
+
+`dotnet new xunit -n MyTool.Tests`
+
+The link between them:
+
+`dotnet add MyTool.Tests reference MyTool`
+
+And then build and execution: 
+
+```
+dotnet build
+dotnet test
+```
+
+## Common Problems
+
+- The version of xUnit will likely be too low. If this is the case, you will need to upgrade it in the `.csproj` file in the test folder.
+- If you run into a problem of "repeated declarations", you might need to either make sure that the main `.csproj` contains the below two lines or that both solutions are in folders that are in the same level in the structure:
+
+```
+<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+```
