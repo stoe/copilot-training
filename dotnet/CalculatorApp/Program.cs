@@ -96,5 +96,34 @@ namespace CalculatorApp
             }
             return firstNumber / secondNumber;
         }
+
+        public static double Power(double firstNumber, double secondNumber)
+        {
+            double result = 1;
+            for (int i = 0; i < secondNumber; i++)
+            {
+                result *= firstNumber;
+            }
+            return result;
+        }
+
+        public static double SquareRoot(double number)
+        {
+            if (number < 0)
+            {
+                throw new ArgumentException("Invalid input. Cannot calculate square root of a negative number.");
+            }
+
+            double guess = number / 2;
+            double lastGuess = 0;
+
+            while (guess != lastGuess)
+            {
+                lastGuess = guess;
+                guess = (guess + number / guess) / 2;
+            }
+
+            return guess;
+        }
     }
 }

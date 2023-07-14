@@ -155,5 +155,42 @@ namespace CalculatorApp.Tests
             // Act & Assert
             Assert.Throws<ArgumentException>(() => Calculator.PerformOperation(firstNumber, secondNumber, operation));
         }
+
+        [Fact]
+        public void Power_ReturnsCorrectResult()
+        {
+            // Arrange
+            double firstNumber = 2;
+            double secondNumber = 3;
+
+            // Act
+            double result = Calculator.Power(firstNumber, secondNumber);
+
+            // Assert
+            Assert.Equal(8, result);
+        }
+
+        [Fact]
+        public void SquareRoot_ReturnsCorrectResult()
+        {
+            // Arrange
+            double number = 9;
+
+            // Act
+            double result = Calculator.SquareRoot(number);
+
+            // Assert
+            Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void SquareRoot_ThrowsExceptionForNegativeNumber()
+        {
+            // Arrange
+            double number = -1;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => Calculator.SquareRoot(number));
+        }
     }
 }
