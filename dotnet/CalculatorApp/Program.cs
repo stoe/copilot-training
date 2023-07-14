@@ -9,8 +9,8 @@ namespace CalculatorApp
         static void Main(string[] args)
         {
             double firstNumber = 0;
-            double secondNumber = 0;
             string? operation = null;
+            double secondNumber = 0;
 
             // Get the first number from the user.
             while (true)
@@ -23,27 +23,30 @@ namespace CalculatorApp
                 Console.WriteLine("Invalid input. Please enter a valid number.");
             }
 
-            // Get the second number from the user.
-            while (true)
-            {
-                Console.Write("Enter another number: ");
-                if (double.TryParse(Console.ReadLine(), out secondNumber))
-                {
-                    break;
-                }
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-            }
-
             // Get an operation from the user.
             while (true)
             {
-                Console.Write("Enter an operation (+, -, *, /): ");
+                Console.Write("Enter an operation (+, -, *, /, **, sqrt): ");
                 operation = Console.ReadLine();
-                if (operation == "+" || operation == "-" || operation == "*" || operation == "/")
+                if (operation == "+" || operation == "-" || operation == "*" || operation == "/" || operation == "**" || operation == "sqrt")
                 {
                     break;
                 }
                 Console.WriteLine("Invalid input. Please enter a valid operation.");
+            }
+
+            // Get the second number from the user.
+            if (operation != "sqrt")
+            {
+                while (true)
+                {
+                    Console.Write("Enter another number: ");
+                    if (double.TryParse(Console.ReadLine(), out secondNumber))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
             }
 
             // Perform the operation.
@@ -68,6 +71,10 @@ namespace CalculatorApp
                     return Multiply(firstNumber, secondNumber);
                 case "/":
                     return Divide(firstNumber, secondNumber);
+                case "**":
+                    return Power(firstNumber, secondNumber);
+                case "sqrt":
+                    return SquareRoot(firstNumber);
                 default:
                     throw new ArgumentException("Unknown operation.");
             }
