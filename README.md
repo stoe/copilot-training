@@ -11,7 +11,7 @@ The assumption is that the demos consist of two parts:
 1. Writing two shell scripts to interact with the GitHub API (create a repository and list repositories in an organization). This shows that Copilot can handle scripting and how an integration with an API works.
 2. Implementing a command-line tool that performs basic math operations. This, though simple, shows how fast one can go from 0 to a functional tool that includes tests and validations. The benefit of a CLI tool is that pretty much any of the most popular languages can support it with minimal effort and library utilization.
 
-# Dotnet
+# dotnet
 
 A valid prompt to trigger the dotnet demo in Copilot Chat could be along the lines of:
 
