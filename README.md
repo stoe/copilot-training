@@ -1,4 +1,4 @@
-# copilot-training
+# Copilot for Business Fundamentals
 
 Material for consultation during Copilot demos/trainings.
 
